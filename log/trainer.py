@@ -217,9 +217,9 @@ class TrainConsoleLoggerBase(TrainLoggerBase):
 
 class TrainJupyterLoggerBase(TrainLoggerBase):
     live_graph: LiveGraph
-    def __init__(self, live_graph, loss_module, model, optimizer, scheduler=None):
+    def __init__(self, live_graph, loss_module, model, optimizer, scheduler=None, weightsdir=""):
         self.live_graph = _check_ins('live_graph', live_graph, LiveGraph)
-        super().__init__(loss_module, model, optimizer, scheduler)
+        super().__init__(loss_module, model, optimizer, scheduler, weightsdir)
 
 
     def set_losses(self, x, names, losses):
@@ -256,8 +256,8 @@ def _learn_objrecog(self, images, targets):
 class TrainObjectRecognitionConsoleLogger(TrainConsoleLoggerBase):
     model: ObjectRecognitionModelBase
 
-    def __init__(self, loss_module, model, optimizer, scheduler=None):
-        super().__init__(loss_module, model, optimizer, scheduler)
+    def __init__(self, loss_module, model, optimizer, scheduler=None, weightsdir=""):
+        super().__init__(loss_module, model, optimizer, scheduler, weightsdir)
         _ = _check_ins('model', model, (ObjectRecognitionModelBase, nn.DataParallel))
 
     def learn(self, images, targets):
@@ -266,8 +266,8 @@ class TrainObjectRecognitionConsoleLogger(TrainConsoleLoggerBase):
 class TrainObjectRecognitionJupyterLogger(TrainJupyterLoggerBase):
     model: ObjectRecognitionModelBase
 
-    def __init__(self, live_graph, loss_module, model, optimizer, scheduler=None):
-        super().__init__(live_graph, loss_module, model, optimizer, scheduler)
+    def __init__(self, live_graph, loss_module, model, optimizer, scheduler=None, weightsdir=""):
+        super().__init__(live_graph, loss_module, model, optimizer, scheduler, weightsdir)
         _ = _check_ins('model', model, (ObjectRecognitionModelBase, nn.DataParallel))
 
     def learn(self, images, targets):
@@ -290,8 +290,8 @@ def _learn_objdetn(self, images, targets):
 class TrainObjectDetectionConsoleLogger(TrainConsoleLoggerBase):
     model: ObjectDetectionModelBase
 
-    def __init__(self, loss_module, model, optimizer, scheduler=None):
-        super().__init__(loss_module, model, optimizer, scheduler)
+    def __init__(self, loss_module, model, optimizer, scheduler=None, weightsdir=""):
+        super().__init__(loss_module, model, optimizer, scheduler, weightsdir)
         _ = _check_ins('model', model, (ObjectDetectionModelBase, nn.DataParallel))
 
     def learn(self, images, targets):
@@ -300,8 +300,8 @@ class TrainObjectDetectionConsoleLogger(TrainConsoleLoggerBase):
 class TrainObjectDetectionJupyterLogger(TrainJupyterLoggerBase):
     model: ObjectDetectionModelBase
 
-    def __init__(self, live_graph, loss_module, model, optimizer, scheduler=None):
-        super().__init__(live_graph, loss_module, model, optimizer, scheduler)
+    def __init__(self, live_graph, loss_module, model, optimizer, scheduler=None, weightsdir=""):
+        super().__init__(live_graph, loss_module, model, optimizer, scheduler, weightsdir)
         _ = _check_ins('model', model, (ObjectDetectionModelBase, nn.DataParallel))
 
     def learn(self, images, targets):
@@ -331,8 +331,8 @@ def _learn_txtspotting(self, images, targets, texts):
 class TrainTextSpottingConsoleLogger(TrainConsoleLoggerBase):
     model: TextSpottingModelBase
 
-    def __init__(self, loss_module, model, optimizer, scheduler=None):
-        super().__init__(loss_module, model, optimizer, scheduler)
+    def __init__(self, loss_module, model, optimizer, scheduler=None, weightsdir=""):
+        super().__init__(loss_module, model, optimizer, scheduler, weightsdir)
         _ = _check_ins('model', model, (TextSpottingModelBase, nn.DataParallel))
 
     def learn(self, images, targets, texts):
@@ -341,8 +341,8 @@ class TrainTextSpottingConsoleLogger(TrainConsoleLoggerBase):
 class TrainTextSpottingJupyterLogger(TrainJupyterLoggerBase):
     model: TextSpottingModelBase
 
-    def __init__(self, live_graph, loss_module, model, optimizer, scheduler=None):
-        super().__init__(live_graph, loss_module, model, optimizer, scheduler)
+    def __init__(self, live_graph, loss_module, model, optimizer, scheduler=None, weightsdir=""):
+        super().__init__(live_graph, loss_module, model, optimizer, scheduler, weightsdir)
         _ = _check_ins('model', model, (TextSpottingModelBase, nn.DataParallel))
 
     def learn(self, images, targets, texts):
