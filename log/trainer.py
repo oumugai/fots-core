@@ -140,7 +140,7 @@ class TrainLoggerBase(object):
             with open(self.weightsdir+"/train.log", "a") as file:
                 log = "\n"
                 for lossname, lossval in zip(names, losses):
-                    log += lossname + ":" + lossval + "/"
+                    log += lossname + ":" + str(lossval) + "/"
                 file.write(log)
 
             self.update_log(self.now_epoch, self.now_iteration, percentage, iter_time, names, losses)
