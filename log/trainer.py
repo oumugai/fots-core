@@ -1,4 +1,5 @@
 import math
+import json
 import torch
 from torch import nn
 import time, logging, abc, sys, os
@@ -137,7 +138,7 @@ class TrainLoggerBase(object):
             percentage = '{:.0f}%[{}/{}]'.format(percent, self.now_iteration % iter_per_epoch, iter_per_epoch)
 
             with open(self.weightsdir+"/train.log", "a") as file:
-                file.write("\n"+losses)
+                file.write("\n"+json.dumps(losses))
 
             self.update_log(self.now_epoch, self.now_iteration, percentage, iter_time, names, losses)
             if self.isIterationMode:
