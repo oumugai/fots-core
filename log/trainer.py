@@ -136,7 +136,7 @@ class TrainLoggerBase(object):
             percent = 100. * (self.now_iteration % iter_per_epoch) / iter_per_epoch
             percentage = '{:.0f}%[{}/{}]'.format(percent, self.now_iteration % iter_per_epoch, iter_per_epoch)
 
-            with open(self.weightsdir, "a") as file:
+            with open(self.weightsdir+"/train.log", "a") as file:
                 file.write("\n"+losses)
 
             self.update_log(self.now_epoch, self.now_iteration, percentage, iter_time, names, losses)
