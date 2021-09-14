@@ -138,7 +138,10 @@ class TrainLoggerBase(object):
             percentage = '{:.0f}%[{}/{}]'.format(percent, self.now_iteration % iter_per_epoch, iter_per_epoch)
 
             with open(self.weightsdir+"/train.log", "a") as file:
-                file.write("\n"+json.dumps(losses))
+                log = "\n"
+                for lossname, lossval in zip(names, losses):
+                    log += lossname + ":" + lossval + "/"
+                file.write(log)
 
             self.update_log(self.now_epoch, self.now_iteration, percentage, iter_time, names, losses)
             if self.isIterationMode:
