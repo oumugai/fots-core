@@ -40,6 +40,6 @@ class Text2Number(object):
                     
         if len(drop_words) > 0:
             #print(drop_words)
-            with open("./not_used_word.txt", "a") as file:
+            with open("./gdrive/My Drive/FOTS/not_used_word.txt", "a") as file:
                 file.write(" ".join(drop_words))
         return (np.array(ret_labels), *args)
