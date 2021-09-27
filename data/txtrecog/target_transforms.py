@@ -24,17 +24,20 @@ class Text2Number(object):
 
     def __call__(self, labels, *args):
         ret_labels = []
+        drop_words = []
         for c in labels:
             try:
                 c = c.lower() if self._toLower else c
                 if c in self._class_labels:
                     ret_labels += [self._class_labels.index(c)]
                 else:
-                    print(c)
+                    drop_words.append(c)
             except ValueError:
                 if self._ignore_nolabel:
                     continue
                 else:
                     raise Text2Number.NotContainError('{} didn\'t contain ({})'.format(labels, ''.join(self._class_labels)))
-
+                    
+        if len(drop_words) > 0:
+            print(drop_words)
         return (np.array(ret_labels), *args)
