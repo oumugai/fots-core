@@ -5,7 +5,7 @@ from .._utils import DATA_ROOT
 import re
 import pandas as pd
 
-df = pd.read_csv("./joyo.txt", header=None, skiprows=1, delimiter='\t')
+df = pd.read_csv("./dl/data/base/joyo.txt", header=None, skiprows=1, delimiter='\t')
 
 hiragana = \
 ['あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ','た','ち','つ','て',
