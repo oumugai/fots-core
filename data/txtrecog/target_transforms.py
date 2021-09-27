@@ -39,5 +39,7 @@ class Text2Number(object):
                     raise Text2Number.NotContainError('{} didn\'t contain ({})'.format(labels, ''.join(self._class_labels)))
                     
         if len(drop_words) > 0:
-            print(drop_words)
+            #print(drop_words)
+            with open("./not_used_word.txt", "a") as file:
+                file.write(" ".join(drop_words))
         return (np.array(ret_labels), *args)
