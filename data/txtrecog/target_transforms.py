@@ -27,7 +27,10 @@ class Text2Number(object):
         for c in labels:
             try:
                 c = c.lower() if self._toLower else c
-                ret_labels += [self._class_labels.index(c)]
+                if c in self._class_labels:
+                    ret_labels += [self._class_labels.index(c)]
+                else:
+                    print(c)
             except ValueError:
                 if self._ignore_nolabel:
                     continue
