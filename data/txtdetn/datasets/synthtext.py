@@ -4,6 +4,7 @@ from pathlib import Path
 from xml.etree import ElementTree as ET
 from ...txtdetn.datasets.base import TextDetectionDatasetBase, Compose
 from ...base.synthtext import *
+import unicodedata
 
 from ..._utils import DATA_ROOT, _check_ins, _get_xml_et_value
 
@@ -59,7 +60,7 @@ class SynthTextDetectionDatasetMixin:
                           _get_xml_et_value(bndbox, 'x3', float), _get_xml_et_value(bndbox, 'y3', float),
                           _get_xml_et_value(bndbox, 'x4', float), _get_xml_et_value(bndbox, 'y4', float)])
 
-            text = _get_xml_et_value(obj, 'name', str)
+            text = unicodedata.normalize('NFKC', _get_xml_et_value(obj, 'name', str))
             if self._onlyAlphaNumeric and not text.isalnum():
                 raise _FoundNonAlphaNumeric()
             texts.append(text)
