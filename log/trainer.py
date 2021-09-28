@@ -155,7 +155,6 @@ class TrainLoggerBase(object):
 
             if self.now_iteration % iter_per_epoch == 0:
                 self._now_epoch += 1
-
                 if self.isEpochMode:
                     if self.now_epoch % savemanager.plot_interval == 0 or \
                             self.now_epoch == start_epoch + 1 or \

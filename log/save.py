@@ -74,7 +74,6 @@ class SaveManager(object):
     def _update(self, model, now, maximum_number, mode):
         saved_path = ''
         removed_path = ''
-        print("aaaa")
 
         if mode == 'epoch':
             removed_checkpoints_regex_filename = 'e[-]*_checkpoints{}.pth'.format(self.today)
